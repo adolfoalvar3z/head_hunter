@@ -110,13 +110,21 @@ def check_certificate(url):
                 else:
                     print(f"{Fore.RED}[-] El certificado ha expirado.")
     except ssl.SSLError:
-        print(f"{Fore.RED}[-] El sitio no tiene un certificado SSL válido.")
+        print(f"{Fore.RED}[-] El sitio no tiene un certificado SSL válido. Intentando conectar a través de HTTP.")
+        return False
     except ConnectionRefusedError:
         print(f"{Fore.RED}[-] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.")
+        return False
+    return True
 
 if __name__ == "__main__":
     url = input("Ingresa la URL del sitio web a revisar: ")
     if not url.startswith("http://") and not url.startswith("https://"):
         url = "https://" + url
+    if not url.startswith("www.") and not url.split("://")[1].startswith("www."):
+        url = url.replace("https://", "https://www.")
+        url = url.replace("http://", "http://www.")
+    if not check_certificate(url):
+        url = url.replace("https://", "http://")
+        print(f"{Fore.YELLOW}[!] Conectando a través de HTTP: {url}")
     check_headers(url)
-    check_certificate(url)
