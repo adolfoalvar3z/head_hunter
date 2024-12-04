@@ -6,7 +6,6 @@ Este script está diseñado para auditar las cabeceras HTTP de un conjunto de UR
 
 - Verificación de cabeceras de seguridad como `Content-Security-Policy`, `X-Content-Type-Options`, `X-Frame-Options`, `Strict-Transport-Security`, entre otras.
 - Generación de un reporte detallado con los resultados de la auditoría.
-- Soporte para múltiples URLs.
 
 ## Instalación
 
