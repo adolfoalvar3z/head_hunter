@@ -12,7 +12,7 @@ Este script está diseñado para auditar las cabeceras HTTP de un conjunto de UR
 
 1. Clona este repositorio:
     ```bash
-    git clone <URL_DEL_REPOSITORIO>
+    git clone https://github.com/adolfoalvar3z/head_hunter.git
     ```
 2. Navega al directorio del proyecto:
     ```bash
