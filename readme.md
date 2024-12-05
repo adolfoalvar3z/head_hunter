@@ -15,7 +15,7 @@ Este script está diseñado para auditar las cabeceras HTTP de un conjunto de UR
     ```
 2. Navega al directorio del proyecto:
     ```bash
-    cd head_hunter
+    cd header_hunter
     ```
 3. Instala las dependencias necesarias:
     ```bash
