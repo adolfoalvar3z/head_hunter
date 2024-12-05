@@ -115,16 +115,35 @@ def check_certificate(url):
     except ConnectionRefusedError:
         print(f"{Fore.RED}[-] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.")
         return False
+    except socket.gaierror:
+        print(f"{Fore.RED}[-] No se puede resolver el nombre de host: {hostname}")
+        return False
     return True
+
+def validate_and_check(url):
+    if not url.startswith("http://") and not url.startswith("https://"):
+        url = "https://" + url
+
+    urls_to_check = [url]
+    if "://" in url:
+        protocol, rest = url.split("://", 1)
+        if not rest.startswith("www."):
+            urls_to_check.append(f"{protocol}://www.{rest}")
+        else:
+            urls_to_check.append(f"{protocol}://{rest[4:]}")
+    else:
+        if not url.startswith("www."):
+            urls_to_check.append(f"www.{url}")
+        else:
+            urls_to_check.append(url[4:])
+
+    for url in urls_to_check:
+        print(f"{Fore.YELLOW}[!] Probando URL: {url}")
+        if not check_certificate(url):
+            url = url.replace("https://", "http://")
+            print(f"{Fore.YELLOW}[!] Conectando a través de HTTP: {url}")
+        check_headers(url)
 
 if __name__ == "__main__":
     url = input("Ingresa la URL del sitio web a revisar: ")
-    if not url.startswith("http://") and not url.startswith("https://"):
-        url = "https://" + url
-    if not url.startswith("www.") and not url.split("://")[1].startswith("www."):
-        url = url.replace("https://", "https://www.")
-        url = url.replace("http://", "http://www.")
-    if not check_certificate(url):
-        url = url.replace("https://", "http://")
-        print(f"{Fore.YELLOW}[!] Conectando a través de HTTP: {url}")
-    check_headers(url)
+    validate_and_check(url)
