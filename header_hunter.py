@@ -5,6 +5,12 @@ import ssl
 import socket
 from datetime import datetime, timezone
 
+########################################
+### AUTOR: Adolfo Alvarez - Ninj470
+### FECHA: 2024-12-04
+### VERSION: 1.0
+########################################
+
 # ASCII art
 ascii_art = rf"""{Fore.GREEN}
 __                    _
@@ -17,7 +23,7 @@ __                    _
 | | | | |_| | | | | ||  __/ |
 |_| |_|\__,_|_| |_|\__\___|_|
 
-Ninj470 X Revisión de Cabeceras basadas en recomendaciones Owasp
+Revisión de Cabeceras basadas en recomendaciones Owasp
 https://owasp.org/www-project-secure-headers/
 MEJORES PRACTICAS:
 https://owasp.org/www-project-secure-headers/index.html#div-bestpractices
