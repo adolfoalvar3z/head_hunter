@@ -97,7 +97,7 @@ def check_certificate(url):
     hostname = url.replace("https://", "").replace("http://", "").split('/')[0]
     context = ssl.create_default_context()
     try:
-        with socket.create_connection((hostname, 443)) as sock:
+        with socket.create_connection((hostname, 443), timeout=10) as sock:  # Added timeout
             with context.wrap_socket(sock, server_hostname=hostname) as ssock:
                 cert = ssock.getpeercert()
                 print(f"\n{Fore.CYAN}Revisando certificado de seguridad para {url}\n")
@@ -115,8 +115,11 @@ def check_certificate(url):
     except ConnectionRefusedError:
         print(f"{Fore.RED}[-] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.")
         return False
+    except TimeoutError:
+        print(f"{Fore.RED}[-] La conexión a {url} ha expirado. El servidor no respondió a tiempo.")
+        return False
     except socket.gaierror:
-        print(f"{Fore.RED}[-] No se puede resolver el nombre de host: {hostname}")
+        print(f"{Fore.RED}[-] No se puede resolver el nombre de host {hostname}. Verifique la URL e intente nuevamente.")
         return False
     return True
 
