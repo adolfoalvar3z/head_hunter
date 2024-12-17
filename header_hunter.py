@@ -1,9 +1,13 @@
-import requests
-from colorama import init, Fore, Style
-import json
-import ssl
-import socket
-from datetime import datetime, timezone
+try:
+    import requests
+    from colorama import init, Fore, Style
+    import json
+    import ssl
+    import socket
+    from datetime import datetime, timezone
+except ModuleNotFoundError as e:
+    print(f"Error: {e}. Please install the required module using 'pip install {e.name}'")
+    exit(1)
 
 ########################################
 ### AUTOR: Adolfo Alvarez - Ninj470
