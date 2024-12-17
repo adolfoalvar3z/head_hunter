@@ -1,3 +1,14 @@
+__                    _
+| |__   ___  __ _  __| | ___ _ __
+| '_ \ / _ \/ _` |/ _` |/ _ \ '__|
+| | | |  __/ (_| | (_| |  __/ |
+|_| |_|\___|\__,_|\__,_|\___|_|____
+| |__  _   _ _ __ | |_ ___ _ |_____|
+| '_ \| | | | '_ \| __/ _ \ '__|
+| | | | |_| | | | | ||  __/ |
+|_| |_|\__,_|_| |_|\__\___|_|
+
+
 # Auditoría de Cabeceras
 
 Este script está diseñado para auditar las cabeceras HTTP de un conjunto de URLs. La auditoría incluye la verificación de cabeceras de seguridad y otras configuraciones importantes para asegurar que las aplicaciones web cumplan con las mejores prácticas de seguridad.
