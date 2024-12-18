@@ -1,4 +1,3 @@
-:: filepath: /d:/asalvarez/Documents/Auditorias/py/header_hunter/setup_and_run.bat
 @echo off
 REM Create virtual environment
 python -m venv venv
